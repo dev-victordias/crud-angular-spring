@@ -25,4 +25,5 @@ public class CrudSpringApplication {
 			courseRepository.save(e);
 		};
 	}
+	
 }
