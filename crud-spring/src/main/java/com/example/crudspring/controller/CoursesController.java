@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import com.example.crudspring.repository.CourseRepository;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/elements")
+@RequestMapping("/api/courses")
 @AllArgsConstructor
 public class CoursesController {
 
@@ -26,6 +27,13 @@ public class CoursesController {
     @GetMapping
     public List<Course> listCourses() {
         return courseRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Course> findById(@PathVariable Long id) {
+        return courseRepository.findById(id)
+            .map(record -> ResponseEntity.ok().body(record))
+            .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
