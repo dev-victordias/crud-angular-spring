@@ -12,26 +12,21 @@
       {{ element.category }}
       <mat-icon aria-hidden="false" aria-label="Pipe example">{{
         element.name | category
-      }}</mat-icon>
+        }}</mat-icon>
     </mat-cell>
   </ng-container>
 
   <!-- Actions Column -->
   <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef class="action-column"> 
-        <button
-        mat-icon-button
-        color="accent"
-        aria-label="Adicionar curso"
-        (click)="onAdd()"
-      >
+    <mat-header-cell *matHeaderCellDef class="action-column">
+      <button mat-icon-button color="accent" aria-label="Adicionar curso" (click)="onAdd()">
         <mat-icon>add</mat-icon>
       </button>
     </mat-header-cell>
 
     <mat-cell *matCellDef="let course" class="action-column">
-      
-      <button mat-icon-button color="primary" aria-label="Editar curso">
+
+      <button mat-icon-button color="primary" aria-label="Editar curso" (click)="onEdit(course)">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button color="warn" aria-label="Remover curso">
